@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package motor_msg;
+import "std.proto";
+
+message MotorCmd {
+    double theta = 1;
+    double beta = 2;
+    double kp = 3;
+    double ki = 4;
+    double kd = 5;
+}
+
+message MotorState {
+    double theta = 1;
+    double beta = 2;
+    double current_r = 3;
+    double current_l = 4;
+}
+
+message MotorCmdStamped {
+    std_msg.Header header = 1;
+    MotorCmd Module_A = 2;
+    MotorCmd Module_B = 3;
+    MotorCmd Module_C = 4;
+    MotorCmd Module_D = 5;
+}
+
+message MotorStateStamped {
+    std_msg.Header header = 1;
+    MotorState Module_A = 2;
+    MotorState Module_B = 3;
+    MotorState Module_C = 4;
+    MotorState Module_D = 5;
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package power_msg;
+import "std.proto";
+
+enum MOTORMODE {
+    REST_MODE=0;
+    HALL_CALIBRATE=1;
+    MOTOR_MODE=2;
+    SET_ZERO=3;
+    IMPEDANCE=4;
+}
+
+message PowerCmdStamped {
+    std_msg.Header header = 1;
+    bool digital = 2;
+    bool power = 3;
+    MOTORMODE motor_mode = 4;
+}
+
+message PowerStateStamped {
+    std_msg.Header header = 1;
+    bool digital = 2;
+    bool power = 3;
+    MOTORMODE motor_mode = 4;
+    double V_0  = 5;
+    double I_0  = 6;
+    double V_1  = 7;
+    double I_1  = 8;
+    double V_2  = 9;
+    double I_2  = 10;
+    double V_3  = 11;
+    double I_3  = 12;
+    double V_4  = 13;
+    double I_4  = 14;
+    double V_5  = 15;
+    double I_5  = 16;
+    double V_6  = 17;
+    double I_6  = 18;
+    double V_7  = 19;
+    double I_7  = 20;
+    double V_8  = 21;
+    double I_8  = 22;
+    double V_9  = 23;
+    double I_9  = 24;
+    double V_10 = 25;
+    double I_10 = 26;
+    double V_11 = 27;
+    double I_11 = 28;
+}
+
+
