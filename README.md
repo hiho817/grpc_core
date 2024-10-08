@@ -5,9 +5,9 @@ This project is a light-weight publisher-subscriber/service(Server-Client) commu
 Install gRPC. 
 https://grpc.io/docs/languages/cpp/quickstart/
 
-note:
-    - 第一步改為 export MY_INSTALL_DIR=${HOME}/corgi_ws 或任何你指定的工作空間。
-    - cmake若有3.13以上，就不用重裝了。
+Note:
+    * 第一步改為 export MY_INSTALL_DIR=${HOME}/corgi_ws 或任何你指定的工作空間。
+    * cmake若有3.13以上，就不用重裝了。
 
 # compile
     $ cd ${worker space}/core 
