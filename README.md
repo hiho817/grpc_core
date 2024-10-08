@@ -36,8 +36,6 @@ For example, if you have device A (**192.168.0.106**) and device B (**192.168.0.
     $ cd build 
     $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install
 
-For me ${grpc-install-prefix} is /${HOME}/.local
-
 # run
     $ source ~/.bashrc 
     $ NodeCore 
