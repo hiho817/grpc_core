@@ -55,32 +55,5 @@ $ ./NodeTestServiceClient // terminal 3 (run in the build file of example/c++)
 ```
 This is the basic ServiceServer/Client protocol, if you launch multiple Server on one service, only the last one works functionally.
 
-# JavaScript preliminary
-
-First you should install node and npm.
-
-    $ cd ${worker space}/core/example/js
-    $ npm init
-    $ npm install @grpc/grpc-js
-    $ npm install protobufjs
-    
-# JavaScript example
-    $ NodeCore
-    $ cd ${worker space}/core/example/js/helloworld 
-    $ node TestPublisher // terminal 1 or you can also use c++ helloworld example publisher with js subscriber
-    $ node TestSubscriber // terminal 2 or you can also use c++ helloworld example subscriber with js publisher
-    $ node TestServiceServer // terminal 3 ...
-    $ node TestServiceClient // terminal 4 ...
-
-All these node should be able to cooperate with c++ program. if you got some error, it might mostly because the message definition. The js message with _{alphabet} would become upper case in nested structure. For exmaple if you use hello.hello: 
-string_field in js declaration should be : **{stringField: "hello"}** instead of : **{string_field: "hello"}**
-
-# Further example
-
-Combine c program and js to obtain a user interface and dashboard. In data-collect-sim, we write a virtual IMU with bias in c, and shows data and get calibration command from web UI.
-
-
-
-https://github.com/peichunhuang-1/core/assets/60284084/56a771a4-5e06-49cb-9c31-0d61e9d8d8bd
-
-
+# Use self-defined message defined in grpc_core
+Please refer to [grpc_node_test](https://github.com/kyle1548/grpc_node_test).
