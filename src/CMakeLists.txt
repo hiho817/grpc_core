@@ -1,7 +1,7 @@
 add_executable(grpccore "Master.cpp")
 target_link_libraries(grpccore
-registration_proto
-connection_proto
+registration_grpc_proto
+connection_grpc_proto
 ${_REFLECTION}
 ${_GRPC_GRPCPP}
 ${_PROTOBUF_LIBPROTOBUF})
