@@ -5,7 +5,7 @@ This project is a light-weight publisher-subscriber/service(Server-Client) commu
 Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/  
 
 **Note:**
-* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/corgi_ws/install". The following all use "$HOME/corgi_ws/install" to replace {your installation path}.
+* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/corgi_ws/install".
 * There is no need to reinstall cmake if it is version 3.13 or later.
 
 ***The following all use "$HOME/corgi_ws/install" to replace {your installation path}.***
