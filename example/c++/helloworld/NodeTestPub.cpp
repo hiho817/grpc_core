@@ -23,7 +23,7 @@ int main() {
         std::cout << "message length\t" << msg_p.ByteSizeLong() << "\n";
         pub.publish(msg_p);
         std::cout << "publishing\t" << msg_p.string_field() << "\n";
-	    std::cout << rate.sleep() << "\n";
+        std::cout << rate.sleep() << " << sleep" << "\n";
         const auto diff = std::chrono::steady_clock::now() - start;
         std::cout << std::chrono::duration<double>(diff).count() << " seconds\n";
     }
