@@ -31,17 +31,20 @@ These will write setting into your bash file.
 For example, if you have device A (**192.168.0.106**) and device B (**192.168.0.172**), and you run your core master node on device A on port **10010**. Then on each device A and B, the **"CORE_MASTER_ADDR"** should be **"192.168.0.106:10010"**, and **"CORE_LOCAL_IP"** on device A is **"192.168.0.106"**, **"CORE_LOCAL_IP"** on device B is **"192.168.0.172"**. 
 
 # example compile
+```
     $ cd grpc_core/example/c++ 
     $ mkdir build 
     $ cd build 
     $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install
+    $ make -j16
+```
 
 # run
-    $ source ~/.bashrc 
-    $ NodeCore 
-    $ ./NodeTestPub // terminal 1
-    $ ./NodeTestSub // terminal 2
-
+```
+    $ NodeCore      // terminal 1
+    $ ./NodeTestPub // terminal 2 (in the build file of example/c++)
+    $ ./NodeTestSub // terminal 3
+```
 This is the basic Publisher/Subscriber protocol, it support multiple subscribers subscribe to one topic, and also multiple publishers publish to a topic is legal but not recommended.
 
     $ NodeCore 
