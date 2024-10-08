@@ -9,20 +9,23 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
 * There is no need to reinstall cmake if it is version 3.13 or later.
 
 # compile
+```
     $ cd grpc_core
     $ mkdir build
     $ cd build
     $ cmake .. -DCMAKE_PREFIX_PATH={your installation path} -DCMAKE_INSTALL_PREFIX={your installation path}
     $ make -j16
     $ make install
-    
+```
+
 # local environment setting
 These will write setting into your bash file
+```
     $ echo export PATH="${worker space}/bin:$PATH" 
     $ echo export CORE_LOCAL_IP="127.0.0.1" >> ~/.bashrc 
     $ echo export CORE_MASTER_ADDR="127.0.0.1:10010" >> ~/.bashrc 
     $ echo export PROTO_PATH=/${HOME}/.local/include >> ~/.bashrc
-
+```
 You can also choose your setting bash file. **"CORE_LOCAL_IP"** should be your local device IP, and **"CORE_MASTER_ADDR"** should be set to same as your local/remote **NodeCore** 
 launched device.
 
