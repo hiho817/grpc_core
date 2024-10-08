@@ -5,7 +5,7 @@ This project is a light-weight publisher-subscriber/service(Server-Client) commu
 Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/  
 
 **Note:**
-* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/corgi_ws/install".
+* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/corgi_ws/install". The following all use "$HOME/corgi_ws/install" to replace {your installation path}.
 * There is no need to reinstall cmake if it is version 3.13 or later.
 
 # compile
@@ -13,7 +13,7 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
     $ cd grpc_core
     $ mkdir build
     $ cd build
-    $ cmake .. -DCMAKE_PREFIX_PATH={your installation path} -DCMAKE_INSTALL_PREFIX={your installation path}
+    $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install
     $ make -j16
     $ make install
 ```
@@ -21,7 +21,7 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
 # local environment setting
 These will write setting into your bash file.
 ```
-    $ echo export PATH={your installation path}/bin:$PATH >> ~/.bashrc
+    $ echo export PATH=\$HOME/corgi_ws/install/bin:\$PATH >> ~/.bashrc
     $ echo export CORE_LOCAL_IP="127.0.0.1" >> ~/.bashrc
     $ echo export CORE_MASTER_ADDR="127.0.0.1:10010" >> ~/.bashrc
     $ source ~/.bashrc
