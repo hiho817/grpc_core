@@ -5,16 +5,18 @@ This project is a light-weight publisher-subscriber/service(Server-Client) commu
 Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/  
 
 Note:
-* 第一步改為 export MY_INSTALL_DIR=${HOME}/corgi_ws 或任何你指定的工作空間。
-* cmake若有3.13以上，就不用重裝了。
+* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/corgi_ws/install".
+* There is no need to reinstall cmake if it is version 3.13 or later.
 
 # compile
-    $ cd ${worker space}/core 
-    $ mkdir build 
-    $ cd build 
-    $ cmake .. -DCMAKE_PREFIX_PATH=${grpc-install-prefix} -DCMAKE_INSTALL_PREFIX=${grpc-install-prefix} 
-    $ make -j8 
-    $ make install 
+    $ cd grpc_core
+    $ mkdir build
+    $ cd build
+    $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install
+    $ make -j16
+    $ make install
+    
+Note:
 
 # local environment setting
 
