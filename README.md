@@ -40,7 +40,7 @@ $ make -j16
 ```
 
 # run example
-### publisher & listener
+### Publisher & Listener
 ```
 $ grpccore      // terminal 1
 $ ./NodeTestPub // terminal 2 (run in the build file of example/c++)
