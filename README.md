@@ -39,18 +39,20 @@ $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install
 $ make -j16
 ```
 
-# run
+# run example
+## publisher & listener
 ```
 $ grpccore      // terminal 1
 $ ./NodeTestPub // terminal 2 (run in the build file of example/c++)
 $ ./NodeTestSub // terminal 3 (run in the build file of example/c++)
 ```
 This is the basic Publisher/Subscriber protocol, it support multiple subscribers subscribe to one topic, and also multiple publishers publish to a topic is legal but not recommended.
-
-    $ NodeCore 
-    $ ./NodeTestServiceServer // terminal 1
-    $ ./NodeTestServiceClient // terminal 2
-
+## Server & Client
+```
+$ grpccore                // terminal 1
+$ ./NodeTestServiceServer // terminal 2 (run in the build file of example/c++)
+$ ./NodeTestServiceClient // terminal 3 (run in the build file of example/c++)
+```
 This is the basic ServiceServer/Client protocol, if you launch multiple Server on one service, only the last one works functionally.
 
 # JavaScript preliminary
