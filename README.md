@@ -10,6 +10,7 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
 
 ***The following all use "$HOME/corgi_ws/install" to replace {your installation path}.***
 # compile
+***Need Complier of C++ 17 or higher***
 ```
 $ cd grpc_core
 $ mkdir build
