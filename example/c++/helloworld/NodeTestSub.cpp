@@ -18,7 +18,7 @@ int main() {
     while (1)
     {
         core::spinOnce();
-        std::cout << "sleep: " << rate.sleep() << "\n";
+        std::cout << rate.sleep() << " << sleep" << "\n";
     }
     return 0;
 }
