@@ -9,7 +9,7 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
 * There is no need to reinstall cmake if it is version 3.13 or later.
 
 #
-#### ***The following all use "$HOME/corgi_ws/install" to replace {your installation path}.***
+###### ***The following all use "$HOME/corgi_ws/install" to replace {your installation path}.***
 # compile
 ```
     $ cd grpc_core
