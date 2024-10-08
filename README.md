@@ -12,7 +12,7 @@ Note:
     $ cd grpc_core
     $ mkdir build
     $ cd build
-    $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install
+    $ cmake .. -DCMAKE_PREFIX_PATH={your installation path} -DCMAKE_INSTALL_PREFIX={your installation path}
     $ make -j16
     $ make install
     
