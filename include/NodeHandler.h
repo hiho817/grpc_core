@@ -14,7 +14,7 @@
 #include "registration.grpc.pb.h"
 #include "connection.grpc.pb.h"
 #include "serviceserving.grpc.pb.h"
-#include <google/protobuf/Any.pb.h>
+#include <google/protobuf/any.pb.h>
 #include "Timer.h"
 
 #include <signal.h>
