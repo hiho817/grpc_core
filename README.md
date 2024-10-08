@@ -42,8 +42,8 @@ For example, if you have device A (**192.168.0.106**) and device B (**192.168.0.
 # run
 ```
     $ NodeCore      // terminal 1
-    $ ./NodeTestPub // terminal 2 (in the build file of example/c++)
-    $ ./NodeTestSub // terminal 3
+    $ ./NodeTestPub // terminal 2 (run in the build file of example/c++)
+    $ ./NodeTestSub // terminal 3 (run in the build file of example/c++)
 ```
 This is the basic Publisher/Subscriber protocol, it support multiple subscribers subscribe to one topic, and also multiple publishers publish to a topic is legal but not recommended.
 
