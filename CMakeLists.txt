@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(Core C CXX)
+project(grpc_core C CXX)
 set (CMAKE_EXE_LINKER_FLAGS)
-set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
@@ -86,6 +87,7 @@ foreach(PROTO_FILE ${PROTO_FILES})
       COMMAND ${_PROTOBUF_PROTOC}
       ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
         --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"
+        -I "${CMAKE_CURRENT_LIST_DIR}/protos"
         -I "${CMAKE_CURRENT_LIST_DIR}/robot_protos"
         --plugin=protoc-gen-grpc="${_GRPC_CPP_PLUGIN_EXECUTABLE}"
         "${PROTO_FILE}"
