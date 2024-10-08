@@ -17,8 +17,8 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
     $ make install
     
 # local environment setting
-
-    $ export PATH="${worker space}/bin:$PATH" 
+These will write setting into your bash file
+    $ echo export PATH="${worker space}/bin:$PATH" 
     $ echo export CORE_LOCAL_IP="127.0.0.1" >> ~/.bashrc 
     $ echo export CORE_MASTER_ADDR="127.0.0.1:10010" >> ~/.bashrc 
     $ echo export PROTO_PATH=/${HOME}/.local/include >> ~/.bashrc
