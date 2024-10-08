@@ -56,5 +56,5 @@ $ ./NodeTestServiceClient // terminal 3 (run in the build file of example/c++)
 This is the basic ServiceServer/Client protocol, if you launch multiple Server on one service, only the last one works functionally.
 
 # Use self-defined message defined in grpc_core
-Self-defined messages are defined in the *robot_protos* file
+Self-defined messages are defined in the *robot_protos* file.  
 Please refer to [grpc_node_test](https://github.com/kyle1548/grpc_node_test) for usage instructions.
