@@ -10,7 +10,7 @@ Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/
 
 ## The following all use "$HOME/corgi_ws/install" to replace {your installation path}.
 **The following all use "$HOME/corgi_ws/install" to replace {your installation path}.**
-*The following all use "$HOME/corgi_ws/install" to replace {your installation path}.*
+***The following all use "$HOME/corgi_ws/install" to replace {your installation path}.***
 # compile
 ```
     $ cd grpc_core
