@@ -51,11 +51,12 @@ foreach(PROTONAME ${PROTONAMES})
     "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.h"
     "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.cc" 
     "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.h")
+    
     target_link_libraries("${PROTONAME}_grpc_proto"
       ${_REFLECTION}
       ${_GRPC_GRPCPP}
       ${_PROTOBUF_LIBPROTOBUF})
-    
+
     target_public_headers(
     "${PROTONAME}_grpc_proto" 
     "${PROTO_PATH}/${PROTONAME}.proto" 
@@ -103,11 +104,12 @@ foreach(PROTO_FILE ${PROTO_FILES})
     "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.h"
     "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.cc" 
     "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.h")
+    
     target_link_libraries("${FILE_NAME}_proto"
       ${_REFLECTION}
       ${_GRPC_GRPCPP}
       ${_PROTOBUF_LIBPROTOBUF})
-    
+
     target_public_headers(
     "${FILE_NAME}_proto" 
     "${PROTO_FILE}" 
@@ -122,8 +124,13 @@ foreach(PROTO_FILE ${PROTO_FILES})
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
 
-    target_link_libraries(grpc_proto_lib INTERFACE "${PROTONAME}_proto")
+    target_link_libraries(grpc_proto_lib INTERFACE "${FILE_NAME}_proto")
 endforeach()
+
+INSTALL(EXPORT grpc_proto_libTargets
+        FILE grpc_proto_libTargets.cmake
+        NAMESPACE grpc_lib::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/grpc_proto_lib)
 
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
