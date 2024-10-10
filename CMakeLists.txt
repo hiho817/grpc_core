@@ -19,10 +19,9 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 macro(target_public_headers TARGET)
   set_target_properties(${TARGET} PROPERTIES PUBLIC_HEADER "${ARGN}")
 endmacro()
+ 
 
-####  grpc proto library 
-add_library(grpc_proto_lib INTERFACE)
-
+set(ALL_PROTO_SRC_FILES)
 #### grpc proto file ####
 set(PROTO_PATH ${CMAKE_CURRENT_LIST_DIR}/protos)
 file(GLOB PROTO_FILES "${PROTO_PATH}/*.proto")
@@ -33,11 +32,13 @@ foreach(PROTO_FILE ${PROTO_FILES})
 endforeach()
 
 foreach(PROTONAME ${PROTONAMES})
+    set(PB_CC "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.cc")
+    set(PB_H "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.h")
+    set(GRPC_PB_CC "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.cc")
+    set(GRPC_PB_H "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.h")
+
     add_custom_command(
-      OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.cc"
-      "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.h"
-      "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.cc" 
-      "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.h"
+      OUTPUT ${PB_CC} ${PB_H} ${GRPC_PB_CC} ${GRPC_PB_H}
       COMMAND ${_PROTOBUF_PROTOC}
       ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
         --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"
@@ -46,22 +47,18 @@ foreach(PROTONAME ${PROTONAMES})
         "${PROTO_PATH}/${PROTONAME}.proto"
       DEPENDS "${PROTO_PATH}/${PROTONAME}.proto")
 
-    add_library("${PROTONAME}_grpc_proto"
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.cc"
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.h"
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.cc" 
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.h")
-    
+    add_library("${PROTONAME}_grpc_proto" ${PB_CC} ${PB_H} ${GRPC_PB_CC} ${GRPC_PB_H})
+
     target_link_libraries("${PROTONAME}_grpc_proto"
       ${_REFLECTION}
       ${_GRPC_GRPCPP}
       ${_PROTOBUF_LIBPROTOBUF})
-
+    
     target_public_headers(
     "${PROTONAME}_grpc_proto" 
     "${PROTO_PATH}/${PROTONAME}.proto" 
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.grpc.pb.h"
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROTONAME}.pb.h")
+    ${GRPC_PB_CC} 
+    ${GRPC_PB_H})
 
     INSTALL(TARGETS "${PROTONAME}_grpc_proto"
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -71,7 +68,7 @@ foreach(PROTONAME ${PROTONAMES})
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
 
-    target_link_libraries(grpc_proto_lib INTERFACE "${PROTONAME}_grpc_proto")
+    list(APPEND ALL_PROTO_SRC_FILES ${PB_CC} ${GRPC_PB_CC})
 endforeach()
 
 #### Self-defined Proto file ####
@@ -85,11 +82,13 @@ foreach(PROTO_FILE ${PROTO_FILES})
     # message(STATUS "FOUND PROTO FILES: ${PROTO_FILE}")
     # message(STATUS "RELATIVE_PROTO_PATH: ${RELATIVE_PROTO_PATH}")
 
+    set(PB_CC "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.cc")
+    set(PB_H "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.h")
+    set(GRPC_PB_CC "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.cc")
+    set(GRPC_PB_H "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.h")
+
     add_custom_command(
-      OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.cc"
-      "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.h"
-      "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.cc" 
-      "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.h"
+      OUTPUT ${PB_CC} ${PB_H} ${GRPC_PB_CC} ${GRPC_PB_H}
       COMMAND ${_PROTOBUF_PROTOC}
       ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
         --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"
@@ -99,22 +98,18 @@ foreach(PROTO_FILE ${PROTO_FILES})
         "${PROTO_FILE}"
       DEPENDS "${PROTO_FILE}")
 
-    add_library("${FILE_NAME}_proto"
-    "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.cc"
-    "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.h"
-    "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.cc" 
-    "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.h")
-    
+    add_library("${FILE_NAME}_proto" ${PB_CC} ${PB_H} ${GRPC_PB_CC} ${GRPC_PB_H})
+
     target_link_libraries("${FILE_NAME}_proto"
       ${_REFLECTION}
       ${_GRPC_GRPCPP}
       ${_PROTOBUF_LIBPROTOBUF})
-
+    
     target_public_headers(
     "${FILE_NAME}_proto" 
     "${PROTO_FILE}" 
-    "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.grpc.pb.h"
-    "${CMAKE_CURRENT_BINARY_DIR}/${RELATIVE_PROTO_PATH}/${FILE_NAME}.pb.h")
+    ${GRPC_PB_CC} 
+    ${GRPC_PB_H})
 
     INSTALL(TARGETS "${FILE_NAME}_proto"
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -124,13 +119,25 @@ foreach(PROTO_FILE ${PROTO_FILES})
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
 
-    target_link_libraries(grpc_proto_lib INTERFACE "${FILE_NAME}_proto")
+    list(APPEND ALL_PROTO_SRC_FILES ${PB_CC} ${GRPC_PB_CC})
 endforeach()
 
-INSTALL(EXPORT grpc_proto_libTargets
-        FILE grpc_proto_libTargets.cmake
-        NAMESPACE grpc_lib::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/grpc_proto_lib)
+#### Construct grpc proto library ####
+add_library(grpc_proto_lib ${ALL_PROTO_SRC_FILES})
+
+target_link_libraries(grpc_proto_lib
+  ${_REFLECTION}
+  ${_GRPC_GRPCPP}
+  ${_PROTOBUF_LIBPROTOBUF})
+
+INSTALL(TARGETS grpc_proto_lib
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
 
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
