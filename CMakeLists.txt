@@ -57,8 +57,8 @@ foreach(PROTONAME ${PROTONAMES})
     target_public_headers(
     "${PROTONAME}_grpc_proto" 
     "${PROTO_PATH}/${PROTONAME}.proto" 
-    ${GRPC_PB_CC} 
-    ${GRPC_PB_H})
+    ${GRPC_PB_H} 
+    ${PB_H})
 
     INSTALL(TARGETS "${PROTONAME}_grpc_proto"
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -108,8 +108,8 @@ foreach(PROTO_FILE ${PROTO_FILES})
     target_public_headers(
     "${FILE_NAME}_proto" 
     "${PROTO_FILE}" 
-    ${GRPC_PB_CC} 
-    ${GRPC_PB_H})
+    ${GRPC_PB_H} 
+    ${PB_H})
 
     INSTALL(TARGETS "${FILE_NAME}_proto"
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
