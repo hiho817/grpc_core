@@ -19,7 +19,10 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 macro(target_public_headers TARGET)
   set_target_properties(${TARGET} PROPERTIES PUBLIC_HEADER "${ARGN}")
 endmacro()
- 
+
+####  grpc proto library 
+add_library(grpc_proto_lib INTERFACE)
+
 #### grpc proto file ####
 set(PROTO_PATH ${CMAKE_CURRENT_LIST_DIR}/protos)
 file(GLOB PROTO_FILES "${PROTO_PATH}/*.proto")
@@ -66,6 +69,8 @@ foreach(PROTONAME ${PROTONAMES})
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
+
+    target_link_libraries(grpc_proto_lib INTERFACE "${PROTONAME}_grpc_proto")
 endforeach()
 
 #### Self-defined Proto file ####
@@ -116,6 +121,8 @@ foreach(PROTO_FILE ${PROTO_FILES})
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
+
+    target_link_libraries(grpc_proto_lib INTERFACE "${PROTONAME}_proto")
 endforeach()
 
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
