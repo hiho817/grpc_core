@@ -61,8 +61,8 @@ The self-defined messages are put in the *robot_protos* file.
 Please refer to [grpc_node_test](https://github.com/kyle1548/grpc_node_test) for usage instructions.
 
 ### On sbRIO
-If you are compiling on sbRIO (Single-Board RIO), you need to make the following modifications.
-Due to old version of libraries on sbRIO, need to use c++14 instead of c++17, make this modification in **CMakeLists.txt**
+If you are compiling on sbRIO (Single-Board RIO), you need to make the following modifications. 
+* Due to old version of libraries on sbRIO, need to use c++14 instead of c++17, make this modification in **CMakeLists.txt**
 ```
 (CMAKE_CXX_STANDARD 17)
 ```
