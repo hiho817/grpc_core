@@ -62,20 +62,20 @@ Please refer to [grpc_node_test](https://github.com/kyle1548/grpc_node_test) for
 
 # On sbRIO
 If you are compiling on sbRIO (Single-Board RIO), you need to make the following modifications.
-* Due to old version of libraries on sbRIO, need to use c++14 instead of c++17, make this modification in **CMakeLists.txt**.
+* Due to the old version of libraries on sbRIO, use c++14 instead of c++17 by modifying **CMakeLists.txt**.
 ```
 set (CMAKE_CXX_STANDARD 14)  # change 17 to 14
 ```
-* Because OpenSSL is installed additionally, need to specify its root directory when cmake projects that using gRPC,  
-i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"**
+* Because OpenSSL is installed additionally, its root directory must be specified when running cmake for projects that use gRPC,  
+i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"** to cmake command.
 ```
 $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install -DOPENSSL_ROOT_DIR=$HOME/corgi_ws/install/ssl
 ```
-*  Because c-ares library is installed in a non-standard location, add library path to the LD_LIBRARY_PATH environment variable in bash file.
+*  Because some libraries (e.g. c-ares) are installed in a non-standard location, add the library path to the LD_LIBRARY_PATH environment variable in the bash file.
 ```
 $ echo export LD_LIBRARY_PATH=$HOME/corgi_ws/install/lib:$LD_LIBRARY_PATH >> ~/.bashrc
 ```
-* Due to memory limit on sbRIO, you might need to use **"make" instead of **"make -j16"** when compile.
+* Due to memory limitations on sbRIO, you may need to use **"make" instead of **"make -j16"** when compiling.
 ```
 $ make
 ```
