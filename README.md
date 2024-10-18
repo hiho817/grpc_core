@@ -66,7 +66,8 @@ If you are compiling on sbRIO (Single-Board RIO), you need to make the following
 ```
 set (CMAKE_CXX_STANDARD 14)  # change 17 to 14
 ```
-* Because OpenSSL is installed additionally, need to specify its root directory when cmake projects that need to use gRPC.  i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"**
+* Because OpenSSL is installed additionally, need to specify its root directory when cmake projects that need to use gRPC.
+i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"**
 ```
 $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install -DOPENSSL_ROOT_DIR=$HOME/corgi_ws/install/ssl
 ```
