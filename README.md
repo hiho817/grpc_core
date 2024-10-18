@@ -71,11 +71,11 @@ i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"** to cmake comm
 ```
 $ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install -DOPENSSL_ROOT_DIR=$HOME/corgi_ws/install/ssl
 ```
-*  Because some libraries (e.g. c-ares) are installed in a non-standard location, add the library path to the LD_LIBRARY_PATH environment variable in the bash file.
+*  Because some libraries (e.g. c-ares) are installed in a non-standard location, add the library path to the **LD_LIBRARY_PATH** environment variable in the bash file.
 ```
 $ echo export LD_LIBRARY_PATH=$HOME/corgi_ws/install/lib:$LD_LIBRARY_PATH >> ~/.bashrc
 ```
-* Due to memory limitations on sbRIO, you may need to use **"make" instead of **"make -j16"** when compiling.
+* Due to memory limitations on sbRIO, you may need to use **"make"** instead of **"make -j16"** when compiling.
 ```
 $ make
 ```
