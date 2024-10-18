@@ -20,16 +20,16 @@ message MotorState {
 
 message MotorCmdStamped {
     std_msg.Header header = 1;
-    MotorCmd Module_A = 2;
-    MotorCmd Module_B = 3;
-    MotorCmd Module_C = 4;
-    MotorCmd Module_D = 5;
+    MotorCmd module_a = 2;
+    MotorCmd module_b = 3;
+    MotorCmd module_c = 4;
+    MotorCmd module_d = 5;
 }
 
 message MotorStateStamped {
     std_msg.Header header = 1;
-    MotorState Module_A = 2;
-    MotorState Module_B = 3;
-    MotorState Module_C = 4;
-    MotorState Module_D = 5;
+    MotorState module_a = 2;
+    MotorState module_b = 3;
+    MotorState module_c = 4;
+    MotorState module_d = 5;
 }
