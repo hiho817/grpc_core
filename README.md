@@ -60,12 +60,20 @@ This is the basic ServiceServer/Client protocol, if you launch multiple Server o
 The self-defined messages are put in the *robot_protos* file.  
 Please refer to [grpc_node_test](https://github.com/kyle1548/grpc_node_test) for usage instructions.
 
-### On sbRIO
+# On sbRIO
 If you are compiling on sbRIO (Single-Board RIO), you need to make the following modifications.
-* Due to old version of libraries on sbRIO, need to use c++14 instead of c++17, make this modification in **CMakeLists.txt**
+* Due to old version of libraries on sbRIO, need to use c++14 instead of c++17, make this modification in **CMakeLists.txt**.
 ```
-(CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD 14)  # change 17 to 14
+```
+* Because OpenSSL is installed additionally, need to specify its root directory when cmake projects that need to use gRPC, i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"
+```
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install -DOPENSSL_ROOT_DIR=$HOME/corgi_ws/install/ssl
 ```
 export LD_LIBRARY_PATH=/home/admin/corgi_ws/install/ssl/lib:$LD_LIBRARY_PATH
 
+* Due to memory limit on sbRIO, you might need to use **"make" instead of **"make -j16"**.
+```
+$ make
+```
 
