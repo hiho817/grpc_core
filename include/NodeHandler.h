@@ -79,9 +79,11 @@ namespace core {
             google::protobuf::io::CodedOutputStream *coded_output = new google::protobuf::io::CodedOutputStream(&aos);
             coded_output->WriteLittleEndian32(msg.ByteSize());
             msg.SerializeToCodedStream(coded_output);
+            delete coded_output;
             std::lock_guard<std::mutex> lock(this->queue_mutex_);
             if (msg_queue.size() > maxSize) msg_queue.pop();
             msg_queue.push(std::string(buf, siz));
+            delete [] buf;
         }
         void call(std::string &ip, uint32_t &port, float &freq) override {
             bool ret = false;
