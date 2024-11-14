@@ -3,26 +3,25 @@ syntax = "proto3";
 package power_msg;
 import "std.proto";
 
-enum MOTORMODE {
+enum ROBOTMODE {
     REST_MODE=0;
-    HALL_CALIBRATE=1;
-    MOTOR_MODE=2;
-    SET_ZERO=3;
-    IMPEDANCE=4;
+    SET_ZERO=1;
+    HALL_CALIBRATE=2;
+    MOTOR_MODE=3;
 }
 
 message PowerCmdStamped {
     std_msg.Header header = 1;
     bool digital = 2;
     bool power = 3;
-    MOTORMODE motor_mode = 4;
+    ROBOTMODE robot_mode = 4;
 }
 
 message PowerStateStamped {
     std_msg.Header header = 1;
     bool digital = 2;
     bool power = 3;
-    MOTORMODE motor_mode = 4;
+    ROBOTMODE robot_mode = 4;
     double v_0  = 5;
     double i_0  = 6;
     double v_1  = 7;
