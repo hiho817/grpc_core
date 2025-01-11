@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package steering_msg;
+import "std.proto";
+
+message SteeringCmdStamped {
+    std_msg.Header header = 1;
+    bool calibration = 2;
+    uint32 voltage = 3;
+    double angle = 4;
+}
+
+message SteeringStateStamped {
+    std_msg.Header header = 1;
+    double current_angle =2;
+    uint32 current_state = 3;
+    bool cmd_finish = 4;
+}

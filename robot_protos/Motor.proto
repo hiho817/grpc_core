@@ -9,13 +9,17 @@ message MotorCmd {
     double kp = 3;
     double ki = 4;
     double kd = 5;
+    double torque_r = 6;
+    double torque_l = 7;
 }
 
 message MotorState {
     double theta = 1;
     double beta = 2;
-    double current_r = 3;
-    double current_l = 4;
+    double velocity_r = 3;
+    double velocity_l = 4;
+    double torque_r = 5;
+    double torque_l = 6;
 }
 
 message MotorCmdStamped {
