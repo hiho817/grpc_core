@@ -5,14 +5,13 @@ import "std.proto";
 
 message SteeringCmdStamped {
     std_msg.Header header = 1;
-    bool calibration = 2;
-    uint32 voltage = 3;
-    double angle = 4;
+    uint32 voltage = 2;
+    double angle = 3;
 }
 
 message SteeringStateStamped {
     std_msg.Header header = 1;
-    double current_angle =2;
-    uint32 current_state = 3;
-    bool cmd_finish = 4;
+    double current_angle = 2;
+    bool current_state = 3;
+    uint32 cmd_finish = 4;
 }
