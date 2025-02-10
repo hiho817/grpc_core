@@ -3,7 +3,7 @@ package std_msg;
 
 message time {
   int32 sec = 1;
-  int32 usec = 2;
+  int32 nsec = 2;
 }
 
 message Header {
