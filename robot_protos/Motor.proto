@@ -4,39 +4,44 @@ package motor_msg;
 import "std.proto";
 
 message MotorCmd {
-    double theta = 1;
-    double beta = 2;
-    double kp_r = 3;
-    double kp_l = 4;
-    double ki_r = 5;
-    double ki_l = 6;
-    double kd_r = 7;
-    double kd_l = 8;
-    double torque_r = 9;
-    double torque_l = 10;
+    double angle = 1;
+    double kp = 2;
+    double ki = 3;
+    double kd = 4;
+    double torque = 5;
 }
+// TODO: check if hup motor can control torque
 
 message MotorState {
-    double theta = 1;
-    double beta = 2;
-    double velocity_r = 3;
-    double velocity_l = 4;
-    double torque_r = 5;
-    double torque_l = 6;
+    double angle = 1;
+    double velocity = 2;
+    double torque = 3;
+}
+
+message LegCmd {
+    MotorCmd hip = 1;
+    MotorCmd streeing = 2;
+    MotorCmd hup = 3;
+}
+
+message LegState {
+    MotorState hip = 1;
+    MotorState streeing = 2;
+    MotorState hup = 3;
 }
 
 message MotorCmdStamped {
     std_msg.Header header = 1;
-    MotorCmd module_a = 2;
-    MotorCmd module_b = 3;
-    MotorCmd module_c = 4;
-    MotorCmd module_d = 5;
+    LegCmd module_a = 2;
+    LegCmd module_b = 3;
+    LegCmd module_c = 4;
+    LegCmd module_d = 5;
 }
 
 message MotorStateStamped {
     std_msg.Header header = 1;
-    MotorState module_a = 2;
-    MotorState module_b = 3;
-    MotorState module_c = 4;
-    MotorState module_d = 5;
+    LegState module_a = 2;
+    LegState module_b = 3;
+    LegState module_c = 4;
+    LegState module_d = 5;
 }
