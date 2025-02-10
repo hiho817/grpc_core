@@ -5,17 +5,17 @@ This project is a light-weight publisher-subscriber/service(Server-Client) commu
 Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/  
 
 **Note:**
-* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/corgi_ws/install".
+* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/kilin_ws/install".
 * There is no need to reinstall cmake if it is version 3.13 or later.
 
-***The following all use "$HOME/corgi_ws/install" to replace {your installation path}.***
+***The following all use "$HOME/kilin_ws/install" to replace {your installation path}.***
 # compile
 ***Need Compiler of C++ 17 or higher***
 ```
 $ cd grpc_core
 $ mkdir build
 $ cd build
-$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/kilin_ws/install
 $ make -j16
 $ make install
 ```
@@ -23,7 +23,7 @@ $ make install
 # local environment setting
 These will write setting into your bash file.
 ```
-$ echo export PATH=\$HOME/corgi_ws/install/bin:\$PATH >> ~/.bashrc
+$ echo export PATH=\$HOME/kilin_ws/install/bin:\$PATH >> ~/.bashrc
 $ echo export CORE_LOCAL_IP="127.0.0.1" >> ~/.bashrc
 $ echo export CORE_MASTER_ADDR="127.0.0.1:10010" >> ~/.bashrc
 $ source ~/.bashrc
@@ -36,7 +36,7 @@ For example, if you have device A (**192.168.0.106**) and device B (**192.168.0.
 $ cd grpc_core/example/c++ 
 $ mkdir build 
 $ cd build 
-$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_ws/install
 $ make -j16
 ```
 
@@ -69,11 +69,11 @@ set (CMAKE_CXX_STANDARD 14)  # change 17 to 14
 * Because OpenSSL is installed additionally, its root directory must be specified when running cmake for projects that use gRPC,  
 i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"** to cmake command.
 ```
-$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/corgi_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/corgi_ws/install -DOPENSSL_ROOT_DIR=$HOME/corgi_ws/install/ssl
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/kilin_ws/install -DOPENSSL_ROOT_DIR=$HOME/kilin_ws/install/ssl
 ```
 *  Because some libraries (e.g. c-ares) are installed in a non-standard location, add the library path to the **LD_LIBRARY_PATH** environment variable in the bash file.
 ```
-$ echo export LD_LIBRARY_PATH=$HOME/corgi_ws/install/lib:$LD_LIBRARY_PATH >> ~/.bashrc
+$ echo export LD_LIBRARY_PATH=$HOME/kilin_ws/install/lib:$LD_LIBRARY_PATH >> ~/.bashrc
 ```
 * Due to memory limitations on sbRIO, you may need to use **"make"** instead of **"make -j16"** when compiling.
 ```
