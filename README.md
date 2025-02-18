@@ -80,3 +80,45 @@ $ echo export LD_LIBRARY_PATH=$HOME/kilin_ws/install/lib:$LD_LIBRARY_PATH >> ~/.
 $ make
 ```
 
+# robot_protos
+## Motor
+```
+MotorCmdStamped
+├─ header (std_msg.Header)
+└─ modules (LegCmd) (a, b, c, d)
+    ├─ hip (MotorCmd)
+    │   ├─ angle
+    │   ├─ kp
+    │   ├─ ki
+    │   ├─ kd
+    │   └─ torque
+    ├─ streeing (MotorCmd)
+    │   ├─ angle
+    │   ├─ kp
+    │   ├─ ki
+    │   ├─ kd
+    │   └─ torque
+    └─ hub (MotorCmd)
+        ├─ angle
+        ├─ kp
+        ├─ ki
+        ├─ kd
+        └─ torque
+
+MotorStateStamped
+├─ header (std_msg.Header)
+└─ modules (LegState) (a, b, c, d)
+    ├─ hip (MotorState)
+    │   ├─ angle
+    │   ├─ velocity
+    │   └─ torque
+    ├─ streeing (MotorState)
+    │   ├─ angle
+    │   ├─ velocity
+    │   └─ torque
+    └─ hub (MotorState)
+        ├─ angle
+        ├─ velocity
+        └─ torque
+
+```
