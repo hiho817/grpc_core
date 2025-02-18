@@ -10,7 +10,6 @@ message MotorCmd {
     double kd = 4;
     double torque = 5;
 }
-// TODO: check if hup motor can control torque
 
 message MotorState {
     double angle = 1;
@@ -21,13 +20,13 @@ message MotorState {
 message LegCmd {
     MotorCmd hip = 1;
     MotorCmd streeing = 2;
-    MotorCmd hup = 3;
+    MotorCmd hub = 3;
 }
-
+// motor need to reset >> motor mode 
 message LegState {
     MotorState hip = 1;
     MotorState streeing = 2;
-    MotorState hup = 3;
+    MotorState hub = 3;
 }
 
 message MotorCmdStamped {
