@@ -14,10 +14,10 @@ enum ROBOTMODE {
 message PowerCmdStamped {
     std_msg.Header header = 1;
     bool digital = 2;
-    bool signal = 3;
-    bool power = 4;
-    bool clean = 5;
-    bool trigger = 6;
+    bool signal = 3;    //5 V or 3.3 V
+    bool power = 4;     //48 V
+    bool clean = 5;     //
+    bool trigger = 6;   //
     ROBOTMODE robot_mode = 7;
     bool steering_cali = 8;
 }
@@ -29,6 +29,7 @@ message PowerStateStamped {
     bool power = 4;
     bool clean = 5;
     ROBOTMODE robot_mode = 6;
+    //TODO: change name
     double v_0  = 7;
     double i_0  = 8;
     double v_1  = 9;
