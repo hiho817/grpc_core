@@ -4,7 +4,7 @@ package motor_msg;
 import "std.proto";
 
 message MotorCmd {
-    double angle = 1;
+    double position = 1;
     double kp = 2;
     double ki = 3;
     double kd = 4;
@@ -12,7 +12,7 @@ message MotorCmd {
 }
 
 message MotorState {
-    double angle = 1;
+    double position = 1;
     double velocity = 2;
     double torque = 3;
 }
