@@ -69,11 +69,11 @@ set (CMAKE_CXX_STANDARD 14)  # change 17 to 14
 * Because OpenSSL is installed additionally, its root directory must be specified when running cmake for projects that use gRPC,  
 i.e. add **"-DOPENSSL_ROOT_DIR={your OpenSSL installation path}"** to cmake command.
 ```
-$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/kilin_ws/install -DOPENSSL_ROOT_DIR=$HOME/kilin_ws/install/ssl
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_sbRIO_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/kilin_sbRIO_ws/install -DOPENSSL_ROOT_DIR=$HOME/kilin_sbRIO_ws/install/ssl
 ```
 *  Because some libraries (e.g. c-ares) are installed in a non-standard location, add the library path to the **LD_LIBRARY_PATH** environment variable in the bash file.
 ```
-$ echo export LD_LIBRARY_PATH=$HOME/kilin_ws/install/lib:$LD_LIBRARY_PATH >> ~/.bashrc
+$ echo export LD_LIBRARY_PATH=$HOME/kilin_sbRIO_ws/install/lib:$LD_LIBRARY_PATH >> ~/.bashrc
 ```
 * Due to memory limitations on sbRIO, you may need to use **"make"** instead of **"make -j16"** when compiling.
 ```
