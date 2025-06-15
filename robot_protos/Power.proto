@@ -5,10 +5,10 @@ import "std.proto";
 
 enum ROBOTMODE {
     REST_MODE=0;
-    SET_ZERO=1;
-    HALL_CALIBRATE=2;
-    MOTOR_MODE=3;
-    CONFIG_MODE=4;
+    CONFIG_MODE=1;
+    SET_ZERO=2;
+    HALL_CALIBRATE=3;
+    MOTOR_MODE=4;
 }
 
 message PowerCmdStamped {
