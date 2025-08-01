@@ -19,13 +19,13 @@ message MotorState {
 
 message LegCmd {
     MotorCmd hip = 1;
-    MotorCmd streeing = 2;
+    MotorCmd steering = 2;
     MotorCmd hub = 3;
 }
 // motor need to reset >> motor mode 
 message LegState {
     MotorState hip = 1;
-    MotorState streeing = 2;
+    MotorState steering = 2;
     MotorState hub = 3;
 }
 
