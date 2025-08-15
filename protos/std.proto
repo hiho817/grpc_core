@@ -5,7 +5,6 @@ message time {
   int32 sec = 1;
   int32 usec = 2;
 }
-// TODO: the time are defined as nsec in ros2, should be modified in ros2_bridge
 
 message Header {
   time stamp = 1;
