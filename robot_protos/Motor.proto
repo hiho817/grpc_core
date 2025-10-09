@@ -9,6 +9,7 @@ message MotorCmd {
     double ki = 3;
     double kd = 4;
     double torque = 5;
+    double velocity = 6;
 }
 
 message MotorState {
