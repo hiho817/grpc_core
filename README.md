@@ -24,8 +24,8 @@ $ make install
 These will write setting into your bash file.
 ```
 $ echo export PATH=\$HOME/kilin_ws/install/bin:\$PATH >> ~/.bashrc
-$ echo export CORE_LOCAL_IP="127.0.0.1" >> ~/.bashrc
-$ echo export CORE_MASTER_ADDR="127.0.0.1:10010" >> ~/.bashrc
+$ echo export CORE_LOCAL_IP="{my_local_ip}" >> ~/.bashrc
+$ echo export CORE_MASTER_ADDR="{my_master_addr}" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 **"CORE_LOCAL_IP"** should be your local device IP, and **"CORE_MASTER_ADDR"** should be set to the same as master IP, i.e. IP of the device which runs **grpccore**.  
