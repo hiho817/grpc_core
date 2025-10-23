@@ -3,14 +3,6 @@ syntax = "proto3";
 package power_msg;
 import "std.proto";
 
-enum ROBOTMODE {
-    REST_MODE=0;
-    CONFIG_MODE=1;
-    SET_ZERO=2;
-    HALL_CALIBRATE=3;
-    MOTOR_MODE=4;
-}
-
 message PowerCmdStamped {
     std_msg.Header header = 1;
     bool digital = 2;
@@ -18,8 +10,7 @@ message PowerCmdStamped {
     bool power = 4;     //48 V
     bool clean = 5;     //
     bool trigger = 6;   //
-    ROBOTMODE robot_mode = 7;
-    bool steering_cali = 8;
+    bool steering_cali = 7;
 }
 
 message PowerStateStamped {
@@ -28,30 +19,29 @@ message PowerStateStamped {
     bool signal = 3;
     bool power = 4;
     bool clean = 5;
-    ROBOTMODE robot_mode = 6;
     //TODO: change name
-    double v_0  = 7;
-    double i_0  = 8;
-    double v_1  = 9;
-    double i_1  = 10;
-    double v_2  = 11;
-    double i_2  = 12;
-    double v_3  = 13;
-    double i_3  = 14;
-    double v_4  = 15;
-    double i_4  = 16;
-    double v_5  = 17;
-    double i_5  = 18;
-    double v_6  = 19;
-    double i_6  = 20;
-    double v_7  = 21;
-    double i_7  = 22;
-    double v_8  = 23;
-    double i_8  = 24;
-    double v_9  = 25;
-    double i_9  = 26;
-    double v_10 = 27;
-    double i_10 = 28;
-    double v_11 = 29;
-    double i_11 = 30;
+    double v_0  = 6;
+    double i_0  = 7;
+    double v_1  = 8;
+    double i_1  = 9;
+    double v_2  = 10;
+    double i_2  = 11;
+    double v_3  = 12;
+    double i_3  = 13;
+    double v_4  = 14;
+    double i_4  = 15;
+    double v_5  = 16;
+    double i_5  = 17;
+    double v_6  = 18;
+    double i_6  = 19;
+    double v_7  = 20;
+    double i_7  = 21;
+    double v_8  = 22;
+    double i_8  = 23;
+    double v_9  = 24;
+    double i_9  = 25;
+    double v_10 = 26;
+    double i_10 = 27;
+    double v_11 = 28;
+    double i_11 = 29;
 }

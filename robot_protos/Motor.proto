@@ -3,6 +3,16 @@ syntax = "proto3";
 package motor_msg;
 import "std.proto";
 
+enum MOTORMODE {
+    REST_MODE=0;
+    CONFIG_MODE=1;
+    SET_ZERO=2;
+    HALL_CALIBRATE=3;
+    POSITION_MODE=4;
+    VELOCITY_MODE=5;
+    TORQUE_MODE=6;
+}
+
 message MotorCmd {
     double position = 1;
     double kp = 2;
@@ -10,6 +20,7 @@ message MotorCmd {
     double kd = 4;
     double torque = 5;
     double velocity = 6;
+    MOTORMODE motor_mode = 7;
 }
 
 message MotorState {
