@@ -27,6 +27,7 @@ message MotorState {
     double position = 1;
     double velocity = 2;
     double torque = 3;
+    MOTORMODE motor_mode = 4;
 }
 
 message LegCmd {
